@@ -4,7 +4,7 @@ import bisect
 import itertools
 
 import numpy as np
-from cantera.speciesthermo import Nasa9PolyMultiTempRegion, NasaPoly2
+from cantera import Nasa9PolyMultiTempRegion, NasaPoly2
 
 import ceptr.writer as cw
 
