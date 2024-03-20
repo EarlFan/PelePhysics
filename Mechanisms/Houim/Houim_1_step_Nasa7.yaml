@@ -1,0 +1,57 @@
+description: |-
+  ""
+
+generator: cti2yaml
+cantera-version: 3.0.0
+date: Thu, 14 Mar 2024 14:46:02 +0800
+input-files: [Houim_1_step_Nasa7.cti]
+
+units: {length: cm, quantity: mol, activation-energy: J/mol}
+
+elements:
+- symbol: a
+  atomic-weight: 31
+
+phases:
+- name: default
+  thermo: ideal-gas
+  elements: [a]
+  species: [R, P]
+  kinetics: gas
+  reactions: all
+  state:
+    T: 1000.0
+    P: 1.01325e+05
+
+species:
+- name: R
+  composition: {a: 1}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 5000.0]
+    data:
+    - [5.555808656, 0.0, 0.0, 0.0, 0.0, 1.778467425e+04, 0.0]
+  transport:
+    model: gas
+    geometry: atom
+    diameter: 2.05
+    well-depth: 145.0
+  note: constant cp with gamma = 1.2195, q = 4.77 MJ/kg
+- name: P
+  composition: {a: 1}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 5000.0]
+    data:
+    - [5.555808656, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  transport:
+    model: gas
+    geometry: atom
+    diameter: 2.05
+    well-depth: 145.0
+  note: constant cp with gamma = 1.2195, q = 4.77 MJ/kg
+
+reactions:
+- equation: ' R  => P'  # Reaction 1
+  rate-constant: {A: 3.3870967741935485e+04, b: 0.0, Ea: 9.710144337030199e+04}
+  orders: {R: 0}
